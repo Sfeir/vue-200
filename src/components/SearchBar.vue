@@ -5,7 +5,7 @@
                 <p>
                     <md-icon>search</md-icon>                
                     <label>Search</label>
-                    <input></input>
+                    <input @keyup.enter="onInput"></input>
                 </p>                  
             </div>
         </form>
@@ -13,8 +13,12 @@
 </template>
 
 <script>
-export default {
-    
+export default {   
+    methods: {
+        onInput (event) {
+            this.$emit('search', event.target.value)
+        }
+    }
 }
 </script>
 
