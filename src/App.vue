@@ -7,7 +7,7 @@
       <h2 class="md-title" style="flex: 1"></h2>
       <span class="link">          
         <router-link to="/people">Peoples</router-link>
-      </span>
+    </span>
     </md-toolbar>
     <router-view></router-view>
   </section>
