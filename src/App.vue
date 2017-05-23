@@ -7,21 +7,29 @@
       <h2 class="md-title" style="flex: 1"></h2>
       <span class="link">          
         <a href="#/people">Peoples</a>
-      </span>
+    </span>
     </md-toolbar>
-    <!-- PUT YOUR CONTENT HERE -->
+    <md-card>
+      <md-card-header>
+        <div class="md-title">Hello {{name}}</div>
+      </md-card-header>
+    </md-card>
   </section>
 </template>
 
 <script>
-
   export default {
-
+    data() {
+      return {
+        name: "Cyril"
+      }
+    }
   }
+
 </script>
 
 <style scoped>
-.navBar {
+  .navBar {
     background-color: #0168AB !important;
     background-image: url('assets/images/bg_right.png');
     background-repeat: no-repeat;
