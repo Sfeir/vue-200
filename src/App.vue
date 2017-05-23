@@ -1,15 +1,15 @@
 <template>
   <section>
     <md-toolbar class="navBar">
-      <a href="#/home">
+      <router-link to="/home">
         <img class="logo" src="./assets/images/logo-people.svg">
-      </a>
+      </router-link>
       <h2 class="md-title" style="flex: 1"></h2>
       <span class="link">          
-        <a href="#/people">Peoples</a>
-    </span>
+        <router-link to="/people">Peoples</router-link>
+      </span>
     </md-toolbar>
-    <sfeir-home></sfeir-home>
+    <router-view></router-view>
   </section>
 </template>
 

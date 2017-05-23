@@ -50,7 +50,7 @@
             </md-layout>
         </md-card-content>
     </md-card>
-    <md-button class="md-fab md-fab-bottom-right md-primary" @click.native="random">
+    <md-button class="md-fab md-fab-bottom-right md-primary" @click="random">
       <md-icon>cached</md-icon>
     </md-button>
   </section>
@@ -66,11 +66,13 @@ export default {
       person:{}
     }
   },
-  created:function(){
+  beforeRouteEnter (route, redirect, next) {
     peopleService
-    .fetch()
-    .then(people=>this.person=people[0])
-    .catch(console.log);
+      .fetchRandom()
+      .then(person => next(vm => {
+        vm.person = person;
+      }))
+      .catch(console.log.bind(console))
   },
   methods:{
     random: function(){
