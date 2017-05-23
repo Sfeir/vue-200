@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import PEOPLE from '../_static/people.js';
+import peopleService from '../services/PeopleService.js';
 
 
 export default {  
@@ -67,11 +67,17 @@ export default {
     }
   },
   created:function(){
-    this.person=PEOPLE[0];
+    peopleService
+    .fetch()
+    .then(people=>this.person=people[0])
+    .catch(console.log);
   },
   methods:{
     random: function(){
-      this.person=PEOPLE[Math.floor(Math.random()*PEOPLE.length)];
+      peopleService
+      .fetchRandom()
+      .then(person =>this.person = person)
+      .catch(console.log);
     }
   }
 }
