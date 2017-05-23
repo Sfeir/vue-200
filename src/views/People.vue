@@ -1,7 +1,19 @@
 <template>
-    <section class="container">
-        <sfeir-card v-for="person in people" :person="person" @delete="deletePerson"></sfeir-card>
-    </section>
+    <div>
+        <section class="container">
+            <sfeir-card v-for="person in people" :person="person" @delete="deletePerson"></sfeir-card>
+        </section>
+        <md-dialog ref="dialog">
+            <md-dialog-title>Contact informations</md-dialog-title>
+            <md-dialog-content>
+                <span>your form goes here</span>
+            </md-dialog-content>
+        </md-dialog>
+
+        <md-button class="md-fab md-fab-bottom-right md-primary" @click="showDialog">
+            <md-icon>add</md-icon>
+        </md-button>>
+    </div>
 </template>
 
 <script>
@@ -34,7 +46,15 @@
                         this.people = people;
                     })
                     .catch(console.log)
-            }
+            },
+            showDialog() {
+                this.$refs['dialog'].open();
+                this.showModal = true;
+            },
+            hideDialog() {
+                this.$refs['dialog'].close();
+                this.showModal = false;
+            },
         }
     }
 
@@ -129,4 +149,5 @@
     .links img {
         padding: 0 5px;
     }
+
 </style>
