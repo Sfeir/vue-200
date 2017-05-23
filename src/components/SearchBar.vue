@@ -5,7 +5,7 @@
                 <md-input-container>
                         <md-icon>search</md-icon>                
                         <label>Search</label>
-                        <md-input required @input="onInput"></md-input>
+                        <md-input required @input="onInput" v-upper></md-input>
                 </md-input-container>        
             </div>
         </form>
@@ -13,12 +13,17 @@
 </template>
 
 <script>
+import upper from '../directives/UpperDirectives.js';
 export default {   
     methods: {
         onInput (event) {
             this.$emit('search', event)
         }
+    },
+    directives:{
+        upper
     }    
+
 }
 </script>
 
