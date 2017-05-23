@@ -11,7 +11,7 @@
 
 					</div>
 					<div class="md-subhead">
-						<div class="subtitle">{{person.entity}}</div>
+						<div class="subtitle">{{person.entity | na}}</div>
 						<div class="people-data">
 							<div class="">
 								<md-icon class="md-accent">email</md-icon>
@@ -25,7 +25,7 @@
 					</div>
 				</md-card-header-text>
 				<md-card-media md-big>
-					<img class="picture" :src="person.photo" />
+					<img class="picture" :src="photoUrl" />
 				</md-card-media>
 			</md-card-header>
 			<md-card-content>
@@ -33,7 +33,7 @@
 					<md-layout md-flex="33">
 						<div>
 							<span class="label">Manager: </span>
-							<span class="item">{{person.manager}}</span>
+							<span class="item">{{person.manager | na }}</span>
 						</div>
 						<div>
 							<span class="label">Location: </span>
@@ -54,13 +54,23 @@
 	</div>
 </template>
 <script>
+	import NaFilter from '../filters/NAFilter.js';
+
 	export default {
 		name:'sfeir-card',
 		props: ['person'],
+		computed: {			
+			photoUrl: function () {
+				return this.person.photo || 'https://randomuser.me/api/portraits/lego/6.jpg';
+			}
+		},
 		methods:{
 			onDelete:function(){
 				this.$emit('delete',this.person);
 			}
+		},
+		filters: {
+			na: NaFilter
 		}
 	}
 </script>
