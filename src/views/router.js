@@ -2,6 +2,7 @@ import VueRouter from 'vue-router'
 
 import Home from './Home.vue'
 import People from './People.vue'
+import Update from './Update.vue'
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     name: 'people',
     path: '/people',
     component: People
+  },
+  {
+    name: 'edit',
+    path: '/edit/:id',
+    component: Update
   },
   {
     path: '/',

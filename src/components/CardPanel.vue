@@ -41,9 +41,9 @@
 						</div>
 					</md-layout>
 					<md-layout md-flex-offset="45">
-						<a href="#">
+						<router-link :to="{ name: 'edit', params: { id: person.id }}">
 							<md-icon class="md-accent">mode_edit</md-icon>
-						</a>
+						</router-link>
 						<a @click="onDelete">
 							<md-icon class="md-accent">delete</md-icon>
 						</a>

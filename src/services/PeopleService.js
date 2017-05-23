@@ -18,5 +18,13 @@ export default {
     create(person){
         return axios.post(BACKEND_URL,person)
         .then(response =>response.data)    
+    },
+    update(person){
+        return axios.put(`${BACKEND_URL}/${person.id}`,person)
+        .then(response =>response.data)    
+    },
+    fetchOne(id){
+        return axios.get(`${BACKEND_URL}/${id}`)
+        .then(response =>response.data)    
     }
 }

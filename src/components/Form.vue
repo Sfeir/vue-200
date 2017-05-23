@@ -1,24 +1,27 @@
 <template>
-    <md-card class="card-panel">        
+    <md-card class="card-panel">
+        <md-card-header v-if="editMode">
+            <div class="md-title">Update {{ person.firstname }} {{ person.lastname }}</div>
+            <div class="md-subhead">{{person.id}}</div>
+        </md-card-header>        
         <md-card-content>
-            <img class="picture" src="https://randomuser.me/api/portraits/lego/6.jpg" />            
-            <form @submit="submit">
-                <md-input-container>
-                    <label>Firstname</label>
-                    <md-input name="firstname"></md-input>                    
-                </md-input-container>
-                <md-input-container>
-                    <label>Lastname</label>
-                    <md-input name="lastname" v-model="person.lastname"></md-input>
-                </md-input-container>
-                <md-input-container>
-                    <label>Email</label>
-                    <md-input name="email" v-model="person.email"></md-input>                    
-                </md-input-container>
-                <md-input-container>
-                    <label>Phone</label>
-                    <md-input name="phone" v-model="person.phone"></md-input>                    
-                </md-input-container>
+            <img class="picture" :src="person.photo || 'https://randomuser.me/api/portraits/lego/6.jpg'" />
+            <md-input-container>
+                <label>Firstname</label>
+                <md-input name="firstname" v-model="person.firstname"></md-input>
+            </md-input-container>
+            <md-input-container>
+                <label>Lastname</label>
+                <md-input name="lastname" v-model="person.lastname"></md-input>
+            </md-input-container>
+            <md-input-container>
+                <label>Email</label>
+                <md-input name="email" v-model="person.email"></md-input>
+            </md-input-container>
+            <md-input-container>
+                <label>Phone</label>
+                <md-input name="phone" v-model="person.phone"></md-input>
+            </md-input-container>
             </form>
         </md-card-content>
         <md-card-actions>
@@ -30,9 +33,22 @@
 </template>
 <script>
     export default {
+        props: {
+            person:{
+                type:Object,
+                default:function(){
+                    return {firstname:'',lastname:'',email:'',phone:''};
+                }
+            }
+        },
         data() {
             return {
-                person:{}
+                
+            }
+        },
+        computed: {
+            editMode: function () {
+                return this.person && this.person.id;
             }
         },
         methods: {
