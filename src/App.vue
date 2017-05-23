@@ -9,21 +9,23 @@
         <a href="#/people">Peoples</a>
     </span>
     </md-toolbar>
-    <md-card>
-      <md-card-header>
-        <div class="md-title">Hello {{name}}</div>
-      </md-card-header>
-    </md-card>
+    <sfeir-home></sfeir-home>
   </section>
 </template>
 
 <script>
+  import Home from './views/Home';
+
   export default {
     data() {
       return {
         name: "Cyril"
       }
+    },
+    components:{
+      'sfeir-home':Home
     }
+
   }
 
 </script>
