@@ -28,12 +28,16 @@
                     <md-input @input="$v.person.email.$touch()" v-model="person.email"></md-input>                
                     <div class="md-error">
                         <span v-show="$v.person.email.$error && !$v.person.email.required">Champs obligatoire</span>                         
-                        <span v-show="$v.person.email.$error && !$v.person.email.email">Vous devez saisir un mail valide</span>                                                 
+                        <span v-show="$v.person.email.$error && !$v.person.email.email">Vous devez saisir un mail valide</span>                         
+                        <span v-show="$v.person.email.$error && !$v.person.email.sfeirmail">Vous devez saisir un mail SFEIR valide (ex: chegham.w@sfeir.com)</span>                         
                     </div>                         
                 </md-input-container>
-                <md-input-container>
+                <md-input-container :class="{ 'md-input-invalid': $v.person.phone.$error }">
                     <label>Phone</label>
-                    <md-input v-model="person.phone"></md-input>                                    
+                    <md-input @input="$v.person.phone.$touch()" v-model="person.phone"></md-input>                
+                    <div class="md-error">
+                        <span v-show="!$v.person.phone.pattern">Vous devez saisir 10 chiffres</span>                                                 
+                    </div>                         
                 </md-input-container>
             </form>
         </md-card-content>
@@ -45,7 +49,7 @@
 </template>
 <script>
     import { required, minLength, email } from 'vuelidate/lib/validators'
-    
+    import customValidator from './customValidator.js'
 
     export default {
         props: {
@@ -73,7 +77,11 @@
                 },
                 email: {
                     required,
-                    email
+                    email,
+                    sfeirmail:customValidator.sfeirmail()
+                },
+                phone: {
+                    pattern:customValidator.pattern(/\d{10}/)                    
                 }
             }
         },
