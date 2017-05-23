@@ -1,20 +1,24 @@
 <template>
     <div class="col s12">
-        <form class="col s6 offset-s3" @submit.prevent>
+        <form class="col s6 offset-s3" >
             <div class="input-field">                
-                <p>
-                    <md-icon>search</md-icon>                
-                    <label>Search</label>
-                    <input></input>
-                </p>                  
+                <md-input-container>
+                        <md-icon>search</md-icon>                
+                        <label>Search</label>
+                        <md-input required @input="onInput"></md-input>
+                </md-input-container>        
             </div>
         </form>
     </div>
 </template>
 
 <script>
-export default {
-    
+export default {   
+    methods: {
+        onInput (event) {
+            this.$emit('search', event)
+        }
+    }    
 }
 </script>
 
