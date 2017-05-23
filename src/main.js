@@ -9,7 +9,7 @@ import Vuelidate from 'vuelidate'
 
 import App from './App'
 import router from './views/router.js'
-
+import store from './store/'
 
 Vue.use(VueRouter)
 Vue.use(VueMaterial)
@@ -25,5 +25,6 @@ Vue.material.registerTheme('default', {
 new Vue({
   el: '#app',  
   router,
+  store,
   render: h => h(App)
 })
