@@ -6,11 +6,11 @@
         <md-dialog ref="dialog">
             <md-dialog-title>Contact informations</md-dialog-title>
             <md-dialog-content>
-                <span>your form goes here</span>
+                <sfeir-form @save="addPerson" @cancel="hideDialog"></sfeir-form>
             </md-dialog-content>
         </md-dialog>
 
-        <md-button class="md-fab md-fab-bottom-right md-primary" @click="showDialog">
+        <md-button class="md-fab md-fab-bottom-right md-primary" @click.native="showDialog">
             <md-icon>add</md-icon>
         </md-button>>
     </div>
@@ -18,12 +18,14 @@
 
 <script>
     import CardPanel from '../components/CardPanel.vue'
+    import Form from '../components/Form.vue'
     import peopleService from '../services/PeopleService.js';
 
 
     export default {
         components: {
-            'sfeir-card': CardPanel
+            'sfeir-card': CardPanel,
+            'sfeir-form': Form
         },
         data() {
             return {
@@ -44,6 +46,15 @@
                     .delete(person.id)
                     .then((people) => {
                         this.people = people;
+                    })
+                    .catch(console.log)
+            },
+            addPerson: function (person) {
+                peopleService
+                    .create(person)
+                    .then((person) => {
+                        this.people.push(person);
+                        this.hideDialog();
                     })
                     .catch(console.log)
             },
