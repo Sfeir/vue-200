@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
-import VeeValidate from 'vee-validate'
+import Vuelidate from 'vuelidate'
 
 import App from './App'
 import router from './views/router.js'
@@ -13,7 +13,7 @@ import router from './views/router.js'
 
 Vue.use(VueRouter)
 Vue.use(VueMaterial)
-Vue.use(VeeValidate)
+Vue.use(Vuelidate)
 
 Vue.material.registerTheme('default', {
   primary: 'blue',
