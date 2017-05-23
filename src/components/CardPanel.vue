@@ -44,7 +44,7 @@
 						<a href="#">
 							<md-icon class="md-accent">mode_edit</md-icon>
 						</a>
-						<a href="#">
+						<a @click="onDelete">
 							<md-icon class="md-accent">delete</md-icon>
 						</a>
 					</md-layout>
@@ -55,7 +55,13 @@
 </template>
 <script>
 	export default {
-		props: ['person']		
+		name:'sfeir-card',
+		props: ['person'],
+		methods:{
+			onDelete:function(){
+				this.$emit('delete',this.person);
+			}
+		}
 	}
 </script>
 <style>
