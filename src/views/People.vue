@@ -12,7 +12,7 @@
 
         <md-button class="md-fab md-fab-bottom-right md-primary" @click.native="showDialog">
             <md-icon>add</md-icon>
-        </md-button>>
+        </md-button>
     </div>
 </template>
 
@@ -159,6 +159,12 @@
     
     .links img {
         padding: 0 5px;
+    }
+
+    .md-fab {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
     }
 
 </style>
