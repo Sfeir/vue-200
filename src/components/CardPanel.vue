@@ -54,7 +54,7 @@
 	</div>
 </template>
 <script>
-	import NaFilter from '../filters/NAFilter.js';
+	import NaFilter from '../filters/NaFilter.js';
 
 	export default {
 		name:'sfeir-card',
