@@ -39,6 +39,15 @@ export default {
             .catch(console.log.bind(console))
     },
     methods: {
+        addPerson: function (person) {
+            peopleService
+                .create(person)
+                .then((person) => {
+                    this.people.push(person);
+                    this.hideDialog();
+                })
+                .catch(console.log)
+        },
         deletePerson: function(person) {
             peopleService
                 .delete(person.id)
