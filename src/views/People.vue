@@ -14,7 +14,7 @@
             </md-dialog-content>
         </md-dialog>
 
-        <md-button class="md-fab md-fab-bottom-right md-primary" @click.native="showDialog">
+        <md-button class="md-fab md-fab-bottom-right md-primary" @click="showDialog">
             <md-icon>add</md-icon>
         </md-button>>
     </div>
