@@ -7,7 +7,7 @@
   "scripts": {
     "client": "node build/dev-server.js",
     "server": "npm start",
-    "dev": "node build/dev-server.js",
+    "dev": "node build/dev-server.js --step=$npm_config_step",
     "build": "node build/build.js",
     "start": "node _server/server.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
